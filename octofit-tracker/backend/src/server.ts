@@ -16,6 +16,21 @@ const baseUrl = process.env.CODESPACE_NAME
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (_request, response) => {
+  response.json({
+    service: 'OctoFit Tracker API',
+    baseUrl,
+    endpoints: [
+      '/api/health/',
+      '/api/users/',
+      '/api/teams/',
+      '/api/activities/',
+      '/api/leaderboard/',
+      '/api/workouts/',
+    ],
+  });
+});
+
 app.get('/api/health/', (_request, response) => {
   response.json({ status: 'ok' });
 });
